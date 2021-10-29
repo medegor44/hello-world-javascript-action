@@ -8442,20 +8442,20 @@ module.exports = require("zlib");
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
-const core = __nccwpck_require__(115)
-const github = __nccwpck_require__(3007)
+const core = __nccwpck_require__(115);
+const github = __nccwpck_require__(3007);
 
 try {
-    const nameToGreet = core.getInput('who-to-greet');
-    console.log(`Hello ${nameToGreet}`);
+  const nameToGreet = core.getInput('who-to-greet');
+  console.log(`Hello ${nameToGreet}!`);
 
-    const time = new Date().toTimeString();
-    core.setOutput('time', time);
+  const time = (new Date()).toTimeString();
+  core.setOutput("time", time);
+  const payload = JSON.stringify(github.context.payload, undefined, 2);
 
-    const payload = JSON.stringify(github.context.payload, undefined, 2);
-    console.log(`event payload is ${payload}`);
-} catch (e) {
-    core.setFailed(e.message);
+  console.log(`The event payload: ${payload}`);
+} catch (error) {
+  core.setFailed(error.message);
 }
 })();
 
